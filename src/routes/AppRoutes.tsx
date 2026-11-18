@@ -3,9 +3,9 @@ import { Navigate, Route, Routes } from "react-router-dom";
 
 import MainLayout from "../components/layout/MainLayout";
 
-import DashboardPage from "../features/dashboard/DashboardPage";
-import ProjectsPage from "../features/projects/ProjectsPage";
-import TasksPage from "../features/tasks/TasksPage";
+import DashboardPage from "../features/dashboard/index.DashboardPage";
+import ProjectsPage from "../features/projects/index.ProjectsPage";
+import TasksPage from "../features/tasks/index.TasksPage";
 
 // Temporary Settings Page
 const SettingsPage = () => {
