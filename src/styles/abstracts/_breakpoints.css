@@ -1,0 +1,28 @@
+
+/* ========================================
+   PROJECTFLOW RESPONSIVE BREAKPOINTS
+   Tailwind CSS v4
+======================================== */
+
+@theme {
+  /* Extra Small Devices */
+  --breakpoint-xxs: 320px;
+
+  /* Small Mobile */
+  --breakpoint-xs: 480px;
+
+  /* Mobile */
+  --breakpoint-sm: 576px;
+
+  /* Tablet */
+  --breakpoint-md: 768px;
+
+  /* Small Desktop */
+  --breakpoint-lg: 992px;
+
+  /* Desktop */
+  --breakpoint-xl: 1200px;
+
+  /* Large Desktop */
+  --breakpoint-xxl: 1400px;
+}

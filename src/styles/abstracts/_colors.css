@@ -1,0 +1,54 @@
+
+:root {
+  /* Brand Colors */
+  --color-primary: #6366f1;
+  --color-primary-hover: #4f46e5;
+  --color-primary-light: #818cf8;
+  --color-primary-muted: rgba(99, 102, 241, 0.12);
+
+  --color-secondary: #8b5cf6;
+  --color-accent: #38bdf8;
+
+  /* Background Colors */
+  --color-background: #0b1020;
+  --color-surface: #111827;
+  --color-surface-secondary: #172033;
+  --color-surface-elevated: #1e293b;
+  --color-sidebar: #0d1324;
+
+  /* Text Colors */
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  --color-text-disabled: #64748b;
+
+  /* Border Colors */
+  --color-border: #263247;
+  --color-border-light: #334155;
+  --color-border-focus: #6366f1;
+
+  /* Status Colors */
+  --color-success: #22c55e;
+  --color-success-bg: rgba(34, 197, 94, 0.12);
+
+  --color-warning: #f59e0b;
+  --color-warning-bg: rgba(245, 158, 11, 0.12);
+
+  --color-danger: #ef4444;
+  --color-danger-bg: rgba(239, 68, 68, 0.12);
+
+  --color-info: #38bdf8;
+  --color-info-bg: rgba(56, 189, 248, 0.12);
+
+  /* Task Priority Colors */
+  --color-priority-low: #22c55e;
+  --color-priority-medium: #f59e0b;
+  --color-priority-high: #ef4444;
+
+  /* Overlay */
+  --color-overlay: rgba(2, 6, 23, 0.75);
+
+  /* Scrollbar */
+  --color-scrollbar: #334155;
+  --color-scrollbar-hover: #475569;
+}
