@@ -1,0 +1,71 @@
+/* ========================================
+   PROJECTFLOW DASHBOARD
+   Component Style Imports
+======================================== */
+
+@import "./components/_overviewCards.css";
+@import "./components/_recentProjects.css";
+
+/* ========================================
+   DASHBOARD PAGE
+======================================== */
+
+.dashboard-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  width: 100%;
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+======================================== */
+
+/* Large Desktop: 1400px and above */
+@media (min-width: 1400px) {
+  .dashboard-page {
+    gap: var(--spacing-8);
+  }
+}
+
+/* Desktop: 1200px to 1399px */
+@media (max-width: 1399px) {
+  .dashboard-page {
+    gap: var(--spacing-8);
+  }
+}
+
+/* Small Desktop: 992px to 1199px */
+@media (max-width: 1199px) {
+  .dashboard-page {
+    gap: var(--spacing-6);
+  }
+}
+
+/* Tablet: 768px to 991px */
+@media (max-width: 991px) {
+  .dashboard-page {
+    gap: var(--spacing-6);
+  }
+}
+
+/* Mobile: 576px to 767px */
+@media (max-width: 767px) {
+  .dashboard-page {
+    gap: var(--spacing-5);
+  }
+}
+
+/* Small Mobile: 480px to 575px */
+@media (max-width: 575px) {
+  .dashboard-page {
+    gap: var(--spacing-4);
+  }
+}
+
+/* Extra Small: 320px to 479px */
+@media (max-width: 479px) {
+  .dashboard-page {
+    gap: var(--spacing-4);
+  }
+}
