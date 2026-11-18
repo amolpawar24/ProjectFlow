@@ -1,0 +1,207 @@
+
+/* ========================================
+   PROJECTFLOW - OVERVIEW CARDS
+======================================== */
+
+/* Overview Grid */
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--spacing-5);
+}
+
+/* Overview Card */
+
+.overview-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+
+  min-width: 0;
+  padding: var(--spacing-6);
+
+  background: linear-gradient(
+    145deg,
+    rgba(30, 41, 59, 0.75),
+    rgba(17, 24, 39, 0.95)
+  );
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+
+  transition:
+    transform var(--transition-normal),
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+/* Accent Line */
+
+.overview-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 20px;
+
+  width: 45%;
+  height: 2px;
+
+  background: var(--card-accent);
+  opacity: 0.8;
+}
+
+/* Hover Effect */
+
+.overview-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--card-accent);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Card Variants */
+
+.overview-card--primary {
+  --card-accent: #818cf8;
+}
+
+.overview-card--info {
+  --card-accent: #38bdf8;
+}
+
+.overview-card--success {
+  --card-accent: #22c55e;
+}
+
+.overview-card--warning {
+  --card-accent: #f59e0b;
+}
+
+/* Card Top */
+
+.overview-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Card Icon */
+
+.overview-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 46px;
+  height: 46px;
+
+  color: var(--card-accent);
+  background: color-mix(in srgb, var(--card-accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-accent) 20%, transparent);
+  border-radius: var(--radius-lg);
+}
+
+/* Card Content */
+
+.overview-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.overview-card__label {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.overview-card__value {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+}
+
+.overview-card__description {
+  color: var(--color-text-disabled);
+  font-size: var(--font-size-xs);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+/* Large Desktop - 1400px and above */
+
+@media (min-width: 1400px) {
+  .overview-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Desktop - 1200px to 1399px */
+
+@media (max-width: 1399px) {
+  .overview-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Small Desktop - 992px to 1199px */
+
+@media (max-width: 1199px) {
+  .overview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Tablet - 768px to 991px */
+
+@media (max-width: 991px) {
+  .overview-grid {
+    gap: var(--spacing-4);
+  }
+}
+
+/* Mobile - 576px to 767px */
+
+@media (max-width: 767px) {
+  .overview-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--spacing-4);
+  }
+
+  .overview-card {
+    padding: var(--spacing-5);
+  }
+}
+
+/* Small Mobile - 480px to 575px */
+
+@media (max-width: 575px) {
+  .overview-grid {
+    gap: var(--spacing-3);
+  }
+
+  .overview-card {
+    gap: var(--spacing-4);
+  }
+}
+
+/* Extra Small - 320px to 479px */
+
+@media (max-width: 479px) {
+  .overview-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .overview-card {
+    padding: var(--spacing-5);
+  }
+
+  .overview-card__value {
+    font-size: var(--font-size-2xl);
+  }
+}
