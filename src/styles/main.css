@@ -1,3 +1,7 @@
+/* ========================================
+   PROJECTFLOW MAIN STYLESHEET
+======================================== */
+
 /* Tailwind */
 @import "tailwindcss";
 
@@ -14,17 +18,24 @@
 /* Layout */
 @import "./layout/_layout.css";
 
-/* Components */
+/* Common Components */
 @import "./components/_sidebar.css";
 @import "./components/_header.css";
 @import "./components/_button.css";
 @import "./components/_modal.css";
 @import "./components/_badge.css";
+@import "./components/_input.css";
+@import "./components/_loader.css";
+@import "./components/_empty-state.css";
 
-/* Pages */
-@import "./pages/_dashboard.css";
-@import "./pages/_projects.css";
-@import "./pages/_tasks.css";
+/* Dashboard */
+@import "./pages/dashboard/_dashboard.index.css";
+
+/* Projects */
+@import "./pages/projects/_projects.index.css";
+
+/* Tasks */
+@import "./pages/tasks/_tasks.index.css";
 
 /* Utilities */
 @import "./utilities/_animations.css";
