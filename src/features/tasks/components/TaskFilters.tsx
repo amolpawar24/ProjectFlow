@@ -18,18 +18,22 @@ interface TaskFiltersProps {
 }
 
 const TaskFilters = ({ filters, onChange }: TaskFiltersProps) => {
+  // Update search and filter values
   const handleChange = (
     field: keyof TaskFiltersValue,
     value: string
   ) => {
-    onChange({
+    const updatedFilters: TaskFiltersValue = {
       ...filters,
       [field]: value,
-    });
+    };
+
+    onChange(updatedFilters);
   };
 
   return (
     <div className="task-filters">
+      {/* Search Tasks */}
       <div className="task-filters__search">
         <Search size={18} aria-hidden="true" />
 
@@ -44,7 +48,9 @@ const TaskFilters = ({ filters, onChange }: TaskFiltersProps) => {
         />
       </div>
 
+      {/* Filter Controls */}
       <div className="task-filters__controls">
+        {/* Status Filter */}
         <div className="task-filters__select-wrapper">
           <SlidersHorizontal size={16} aria-hidden="true" />
 
@@ -62,6 +68,7 @@ const TaskFilters = ({ filters, onChange }: TaskFiltersProps) => {
           </select>
         </div>
 
+        {/* Priority Filter */}
         <div className="task-filters__select-wrapper">
           <select
             value={filters.priority}
