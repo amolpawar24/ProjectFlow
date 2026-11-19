@@ -212,9 +212,9 @@
 
   background: linear-gradient(
     90deg,
-    var(--color-primary),
-    var(--color-secondary),
-    var(--color-accent)
+    var(--color-pecondary),
+    var(--colorrimary),
+    var(--color-s-accent)
   );
 
   border-radius: var(--radius-full);
