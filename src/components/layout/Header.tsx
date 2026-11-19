@@ -1,10 +1,11 @@
 
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import {
   Search,
   Bell,
   ChevronRight,
   Plus,
+  X,
 } from "lucide-react";
 
 const pageDetails: Record<string, { title: string; description: string }> = {
@@ -28,9 +29,29 @@ const pageDetails: Record<string, { title: string; description: string }> = {
 
 const Header = () => {
   const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const currentPage =
     pageDetails[location.pathname] ?? pageDetails["/dashboard"];
+
+  const isSearchEnabled =
+    location.pathname === "/projects" ||
+    location.pathname === "/tasks";
+
+  const search = searchParams.get("q") ?? "";
+
+  // Update search based on the current page
+  const handleSearchChange = (value: string) => {
+    const updatedParams = new URLSearchParams(searchParams);
+
+    if (value.trim()) {
+      updatedParams.set("q", value);
+    } else {
+      updatedParams.delete("q");
+    }
+
+    setSearchParams(updatedParams, { replace: true });
+  };
 
   return (
     <header className="header">
@@ -63,24 +84,50 @@ const Header = () => {
 
       {/* Header Actions */}
       <div className="header__actions">
-        {/* Search */}
-        <div className="header__search">
-          <Search
-            size={18}
-            className="header__search-icon"
-          />
+        {/* Page Search */}
+        {isSearchEnabled && (
+          <div className="header__search">
+            <Search
+              size={18}
+              className="header__search-icon"
+            />
 
-          <input
-            type="search"
-            placeholder="Search anything..."
-            aria-label="Search"
-            className="header__search-input"
-          />
+            <input
+              type="search"
+              placeholder={
+                location.pathname === "/tasks"
+                  ? "Search tasks..."
+                  : "Search projects..."
+              }
+              aria-label={
+                location.pathname === "/tasks"
+                  ? "Search tasks"
+                  : "Search projects"
+              }
+              className="header__search-input"
+              value={search}
+              onChange={(event) =>
+                handleSearchChange(event.target.value)
+              }
+            />
 
-          <kbd className="header__search-shortcut">
-            Ctrl K
-          </kbd>
-        </div>
+            {search ? (
+              <button
+                type="button"
+                className="header__search-clear"
+                onClick={() => handleSearchChange("")}
+                aria-label="Clear search"
+                title="Clear search"
+              >
+                <X size={15} />
+              </button>
+            ) : (
+              <kbd className="header__search-shortcut">
+                Ctrl K
+              </kbd>
+            )}
+          </div>
+        )}
 
         {/* Quick Add */}
         <button
