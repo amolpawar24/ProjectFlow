@@ -1,4 +1,6 @@
-import { useState } from "react";
+
+import { useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Plus, Trash2 } from "lucide-react";
 
 import type { Project, ProjectFormData } from "../../types/project.types";
@@ -18,9 +20,20 @@ const ProjectsPage = () => {
     initialProjects,
   );
 
+  const [searchParams] = useSearchParams();
+
+  // Get search text from the Header
+  const searchQuery = searchParams.get("q")?.trim().toLowerCase() ?? "";
+
+  // Filter projects by their names
+  const filteredProjects = useMemo(() => {
+    return projects.filter((project) =>
+      project.name.toLowerCase().includes(searchQuery),
+    );
+  }, [projects, searchQuery]);
+
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
   const [projectToDelete, setProjectToDelete] = useState<Project | null>(null);
 
   // Open create project form
@@ -113,7 +126,7 @@ const ProjectsPage = () => {
 
       {/* Project Listing */}
       <ProjectList
-        projects={projects}
+        projects={filteredProjects}
         onEdit={handleEditProject}
         onDelete={handleDeleteRequest}
       />
