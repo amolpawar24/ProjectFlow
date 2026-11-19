@@ -1,0 +1,264 @@
+
+/* ========================================
+   PROJECTFLOW - PROJECT FORM
+======================================== */
+
+/* Form Layout */
+
+.project-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-5);
+  width: 100%;
+}
+
+.project-form__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  width: 100%;
+  min-width: 0;
+}
+
+/* ========================================
+   FORM LABELS
+======================================== */
+
+.project-form__label {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ========================================
+   TEXTAREA
+======================================== */
+
+.project-form__textarea {
+  width: 100%;
+  min-height: 110px;
+  padding: var(--spacing-3) var(--spacing-4);
+
+  color: var(--color-text-primary);
+  background: var(--color-surface-secondary);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  outline: none;
+
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+
+  resize: vertical;
+
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.project-form__textarea::placeholder {
+  color: var(--color-text-disabled);
+}
+
+.project-form__textarea:hover {
+  border-color: var(--color-border-light);
+}
+
+.project-form__textarea:focus {
+  background: var(--color-surface);
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px var(--color-primary-muted);
+}
+
+.project-form__textarea--error {
+  border-color: var(--color-danger);
+}
+
+.project-form__textarea--error:focus {
+  border-color: var(--color-danger);
+  box-shadow: 0 0 0 3px var(--color-danger-bg);
+}
+
+/* ========================================
+   SELECT DROPDOWN
+======================================== */
+
+.project-form__select {
+  width: 100%;
+  min-height: 44px;
+  padding: var(--spacing-3) var(--spacing-4);
+
+  color: var(--color-text-primary);
+  background-color: var(--color-surface-secondary);
+
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  outline: none;
+
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+
+  cursor: pointer;
+
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.project-form__select:hover {
+  border-color: var(--color-border-light);
+}
+
+.project-form__select:focus {
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px var(--color-primary-muted);
+}
+
+.project-form__select option {
+  color: var(--color-text-primary);
+  background: var(--color-surface);
+}
+
+/* ========================================
+   DATE GRID
+======================================== */
+
+.project-form__date-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-4);
+  width: 100%;
+}
+
+/* ========================================
+   VALIDATION ERRORS
+======================================== */
+
+.project-form__error {
+  display: block;
+  color: var(--color-danger);
+  font-size: var(--font-size-xs);
+  line-height: 1.5;
+}
+
+/* ========================================
+   FORM HINT
+======================================== */
+
+.project-form__hint {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-3);
+
+  padding: var(--spacing-3) var(--spacing-4);
+
+  color: var(--color-text-muted);
+  background: var(--color-primary-muted);
+
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: var(--radius-md);
+
+  font-size: var(--font-size-xs);
+  line-height: 1.6;
+}
+
+.project-form__hint svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--color-primary-light);
+}
+
+/* ========================================
+   FORM FOOTER
+======================================== */
+
+.project-form__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-3);
+  width: 100%;
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+======================================== */
+
+/* Large Desktop: 1400px and above */
+
+@media (min-width: 1400px) {
+  .project-form {
+    gap: var(--spacing-6);
+  }
+}
+
+/* Desktop: 1200px to 1399px */
+
+@media (max-width: 1399px) {
+  .project-form {
+    gap: var(--spacing-5);
+  }
+}
+
+/* Small Desktop: 992px to 1199px */
+
+@media (max-width: 1199px) {
+  .project-form__date-grid {
+    gap: var(--spacing-3);
+  }
+}
+
+/* Tablet: 768px to 991px */
+
+@media (max-width: 991px) {
+  .project-form {
+    gap: var(--spacing-4);
+  }
+}
+
+/* Mobile: 576px to 767px */
+
+@media (max-width: 767px) {
+  .project-form__date-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-4);
+  }
+}
+
+/* Small Mobile: 480px to 575px */
+
+@media (max-width: 575px) {
+  .project-form {
+    gap: var(--spacing-4);
+  }
+
+  .project-form__footer {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+
+  .project-form__footer button {
+    width: 100%;
+  }
+}
+
+/* Extra Small: 320px to 479px */
+
+@media (max-width: 479px) {
+  .project-form__textarea {
+    min-height: 95px;
+    padding: var(--spacing-3);
+  }
+
+  .project-form__select {
+    padding: var(--spacing-3);
+  }
+
+  .project-form__hint {
+    padding: var(--spacing-3);
+    gap: var(--spacing-2);
+  }
+}
