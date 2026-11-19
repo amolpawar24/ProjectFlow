@@ -1,15 +1,14 @@
 
 import {
   CalendarDays,
+  FolderKanban,
   Pencil,
   Trash2,
-  FolderKanban,
 } from "lucide-react";
 
 import type { Project } from "../../../types/project.types";
 
 import Badge from "../../../components/common/Badge";
-import Button from "../../../components/common/Button";
 
 import { formatDate, isOverdue } from "../../../utils/dateUtils";
 
@@ -41,9 +40,12 @@ const ProjectCard = ({
     }
   };
 
-  const overdue = isOverdue(
-    project.dueDate,
-    project.status
+  const overdue =
+    project.status !== "Completed" && isOverdue(project.dueDate);
+
+  const progress = Math.min(
+    100,
+    Math.max(0, project.progress)
   );
 
   return (
@@ -51,90 +53,91 @@ const ProjectCard = ({
       {/* Card Header */}
       <div className="project-card__header">
         <div className="project-card__icon">
-          <FolderKanban size={21} />
+          <FolderKanban size={22} />
         </div>
 
-        <Badge variant={getStatusVariant(project.status)}>
-          {project.status}
-        </Badge>
+        <div className="project-card__actions">
+          <button
+            type="button"
+            className="project-card__action project-card__action--edit"
+            onClick={() => onEdit(project)}
+            aria-label={`Edit ${project.name}`}
+            title="Edit project"
+          >
+            <Pencil size={16} />
+          </button>
+
+          <button
+            type="button"
+            className="project-card__action project-card__action--delete"
+            onClick={() => onDelete(project.id)}
+            aria-label={`Delete ${project.name}`}
+            title="Delete project"
+          >
+            <Trash2 size={16} />
+          </button>
+        </div>
       </div>
 
       {/* Project Information */}
       <div className="project-card__content">
-        <h3 className="project-card__title">
-          {project.name}
-        </h3>
+        <div className="project-card__title-row">
+          <h3 className="project-card__title">
+            {project.name}
+          </h3>
+
+          <Badge variant={getStatusVariant(project.status)}>
+            {project.status}
+          </Badge>
+        </div>
 
         <p className="project-card__description">
-          {project.description}
+          {project.description || "No project description available."}
         </p>
       </div>
 
-      {/* Progress */}
+      {/* Project Progress */}
       <div className="project-card__progress">
         <div className="project-card__progress-header">
           <span>Project Progress</span>
-
-          <strong>
-            {Math.min(100, Math.max(0, project.progress))}%
-          </strong>
+          <strong>{progress}%</strong>
         </div>
 
-        <div className="project-card__progress-track">
+        <div
+          className="project-card__progress-track"
+          role="progressbar"
+          aria-label={`${project.name} progress`}
+          aria-valuenow={progress}
+          aria-valuemin={0}
+          aria-valuemax={100}
+        >
           <div
             className="project-card__progress-fill"
-            style={{
-              width: `${Math.min(
-                100,
-                Math.max(0, project.progress)
-              )}%`,
-            }}
+            style={{ width: `${progress}%` }}
           />
         </div>
       </div>
 
-      {/* Due Date */}
+      {/* Card Footer */}
       <div className="project-card__footer">
-        <div className="project-card__due-date">
-          <CalendarDays size={16} />
+        <div
+          className={`project-card__due-date ${
+            overdue ? "project-card__due-date--overdue" : ""
+          }`}
+        >
+          <CalendarDays size={15} />
 
-          <span
-            className={
-              overdue
-                ? "project-card__due-date--overdue"
-                : ""
-            }
-          >
+          <span>
+            {overdue ? "Overdue: " : "Due: "}
             {formatDate(project.dueDate)}
           </span>
-
-          {overdue && (
-            <Badge variant="danger">Overdue</Badge>
-          )}
         </div>
 
-        {/* Actions */}
-        <div className="project-card__actions">
-          <Button
-            variant="ghost"
-            size="sm"
-            aria-label={`Edit ${project.name}`}
-            title="Edit project"
-            onClick={() => onEdit(project)}
-          >
-            <Pencil size={16} />
-          </Button>
-
-          <Button
-            variant="ghost"
-            size="sm"
-            aria-label={`Delete ${project.name}`}
-            title="Delete project"
-            onClick={() => onDelete(project.id)}
-          >
-            <Trash2 size={16} />
-          </Button>
-        </div>
+        {overdue && (
+          <Badge variant="danger">
+            Overdue
+          </Badge>
+        )}
       </div>
     </article>
   );
