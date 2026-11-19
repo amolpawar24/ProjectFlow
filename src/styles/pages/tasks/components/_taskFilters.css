@@ -1,0 +1,204 @@
+
+/* =========================================================
+   PROJECTFLOW - TASK FILTERS
+========================================================= */
+
+/* ===================== CONTAINER ===================== */
+
+.task-filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+  width: 100%;
+  margin-bottom: var(--spacing-6);
+}
+
+/* ===================== SEARCH ===================== */
+
+.task-filters__search {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  flex: 1;
+  min-width: 0;
+  max-width: 440px;
+  height: 46px;
+  padding: 0 var(--spacing-4);
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.task-filters__search:focus-within {
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px var(--color-primary-muted);
+}
+
+.task-filters__search svg {
+  flex-shrink: 0;
+}
+
+.task-filters__search input {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  padding: 0;
+  color: var(--color-text-primary);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.task-filters__search input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.task-filters__search input::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
+/* ===================== FILTER CONTROLS ===================== */
+
+.task-filters__controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-3);
+  flex-wrap: wrap;
+}
+
+.task-filters__select-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  min-width: 160px;
+  height: 46px;
+  padding: 0 var(--spacing-3);
+  color: var(--color-text-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.task-filters__select-wrapper:focus-within {
+  border-color: var(--color-border-focus);
+  box-shadow: 0 0 0 3px var(--color-primary-muted);
+}
+
+.task-filters__select-wrapper svg {
+  flex-shrink: 0;
+}
+
+.task-filters__select-wrapper select {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  color: var(--color-text-secondary);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.task-filters__select-wrapper select option {
+  color: var(--color-text-primary);
+  background: var(--color-surface-elevated);
+}
+
+/* ===================== RESPONSIVE ===================== */
+
+/* XXL - 1400px */
+@media (min-width: 1400px) {
+  .task-filters {
+    gap: var(--spacing-5);
+  }
+}
+
+/* LG - 992px */
+@media (max-width: 991px) {
+  .task-filters__search {
+    max-width: 360px;
+  }
+
+  .task-filters__select-wrapper {
+    min-width: 145px;
+  }
+}
+
+/* MD - 768px */
+@media (max-width: 767px) {
+  .task-filters {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .task-filters__search {
+    max-width: none;
+  }
+
+  .task-filters__controls {
+    justify-content: flex-start;
+  }
+
+  .task-filters__select-wrapper {
+    flex: 1;
+  }
+}
+
+/* SM - 576px */
+@media (max-width: 575px) {
+  .task-filters__controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .task-filters__select-wrapper {
+    min-width: 0;
+  }
+}
+
+/* XS - 480px */
+@media (max-width: 479px) {
+  .task-filters {
+    gap: var(--spacing-3);
+    margin-bottom: var(--spacing-5);
+  }
+
+  .task-filters__search,
+  .task-filters__select-wrapper {
+    height: 44px;
+  }
+
+  .task-filters__search {
+    padding: 0 var(--spacing-3);
+  }
+
+  .task-filters__search input,
+  .task-filters__select-wrapper select {
+    font-size: var(--font-size-xs);
+  }
+
+  .task-filters__controls {
+    gap: var(--spacing-2);
+  }
+}
+
+/* XXS - 320px */
+@media (max-width: 319px) {
+  .task-filters__controls {
+    grid-template-columns: 1fr;
+  }
+}
