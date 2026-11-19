@@ -11,12 +11,12 @@ import type { Task } from "../../types/task.types";
 
 const DashboardPage = () => {
   const [projects] = useLocalStorage<Project[]>(
-    "projectflow_projects",
+    "projectflow-projects",
     initialProjects
   );
 
   const [tasks] = useLocalStorage<Task[]>(
-    "projectflow_tasks",
+    "projectflow-tasks",
     initialTasks
   );
 
