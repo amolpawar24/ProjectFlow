@@ -1,0 +1,199 @@
+
+/* ========================================
+   PROJECTFLOW - TASK CARD
+======================================== */
+
+.task-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+
+  width: 100%;
+  min-width: 0;
+  padding: var(--spacing-5);
+
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+
+  transition:
+    border-color var(--transition-normal),
+    background-color var(--transition-normal),
+    box-shadow var(--transition-normal),
+    transform var(--transition-normal);
+}
+
+.task-card:hover {
+  background: var(--color-surface-secondary);
+  border-color: var(--color-border-light);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   CARD HEADER
+======================================== */
+
+.task-card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--spacing-3);
+  width: 100%;
+}
+
+.task-card__badges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+  min-width: 0;
+}
+
+.task-card__badges .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-1);
+}
+
+/* ========================================
+   CARD ACTIONS
+======================================== */
+
+.task-card__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  flex-shrink: 0;
+}
+
+.task-card__actions button {
+  min-width: 34px;
+  min-height: 34px;
+  padding: var(--spacing-2);
+  color: var(--color-text-muted);
+  border-radius: var(--radius-md);
+  transition:
+    color var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.task-card__actions button:hover {
+  color: var(--color-primary-light);
+  background: var(--color-primary-muted);
+}
+
+.task-card__actions button:last-child:hover {
+  color: var(--color-danger);
+  background: var(--color-danger-bg);
+}
+
+/* ========================================
+   CARD CONTENT
+======================================== */
+
+.task-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  min-width: 0;
+}
+
+.task-card__title {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.task-card__description {
+  display: -webkit-box;
+  margin: 0;
+
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+/* ========================================
+   CARD FOOTER
+======================================== */
+
+.task-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-top: var(--spacing-3);
+  border-top: 1px solid var(--color-border);
+}
+
+.task-card__due-date {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.task-card__due-date svg {
+  flex-shrink: 0;
+  color: var(--color-text-disabled);
+}
+
+.task-card__due-date--overdue {
+  color: var(--color-danger);
+}
+
+.task-card__due-date--overdue svg {
+  color: var(--color-danger);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+@media (min-width: 1400px) {
+  .task-card {
+    padding: var(--spacing-6);
+  }
+}
+
+@media (max-width: 991px) {
+  .task-card {
+    padding: var(--spacing-4);
+  }
+}
+
+@media (max-width: 575px) {
+  .task-card {
+    gap: var(--spacing-3);
+  }
+
+  .task-card__header {
+    flex-wrap: wrap;
+  }
+
+  .task-card__title {
+    font-size: var(--font-size-base);
+  }
+}
+
+@media (max-width: 479px) {
+  .task-card {
+    padding: var(--spacing-4);
+  }
+
+  .task-card__badges {
+    gap: var(--spacing-1);
+  }
+}
