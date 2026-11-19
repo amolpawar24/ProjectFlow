@@ -19,19 +19,21 @@ function useLocalStorage<T>(key: string, initialValue: T) {
 
   // Update state and save data to LocalStorage
   const updateValue: Dispatch<SetStateAction<T>> = (newValue) => {
-    const updatedValue =
-      typeof newValue === "function"
-        ? (newValue as (prevValue: T) => T)(value)
-        : newValue;
+    setValue((previousValue) => {
+      const updatedValue =
+        typeof newValue === "function"
+          ? (newValue as (previousValue: T) => T)(previousValue)
+          : newValue;
 
-    setValue(updatedValue);
+      try {
+        localStorage.setItem(key, JSON.stringify(updatedValue));
+        setError(null);
+      } catch {
+        setError("Unable to save data. Please check your browser storage.");
+      }
 
-    try {
-      localStorage.setItem(key, JSON.stringify(updatedValue));
-      setError(null);
-    } catch {
-      setError("Unable to save data. Please check your browser storage.");
-    }
+      return updatedValue;
+    });
   };
 
   // Return data, update function and error
