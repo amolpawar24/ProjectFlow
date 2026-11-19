@@ -1,0 +1,97 @@
+
+/* ========================================
+   PROJECTFLOW - TASK LIST
+======================================== */
+
+/* Task Grid */
+
+.task-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--spacing-5);
+
+  width: 100%;
+  min-width: 0;
+}
+
+/* Empty State */
+
+.task-list__empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-height: 300px;
+  padding: var(--spacing-8);
+
+  background: var(--color-surface);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-xl);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+
+/* Large Desktop - 1400px and above */
+
+@media (min-width: 1400px) {
+  .task-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--spacing-6);
+  }
+}
+
+/* Desktop - 1200px to 1399px */
+
+@media (max-width: 1399px) {
+  .task-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Small Desktop - 992px to 1199px */
+
+@media (max-width: 1199px) {
+  .task-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Tablet - 768px to 991px */
+
+@media (max-width: 991px) {
+  .task-list {
+    gap: var(--spacing-4);
+  }
+}
+
+/* Mobile - 576px to 767px */
+
+@media (max-width: 767px) {
+  .task-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Small Mobile - 480px to 575px */
+
+@media (max-width: 575px) {
+  .task-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Extra Small - 320px to 479px */
+
+@media (max-width: 479px) {
+  .task-list {
+    gap: var(--spacing-4);
+  }
+
+  .task-list__empty {
+    min-height: 240px;
+    padding: var(--spacing-5);
+  }
+}
